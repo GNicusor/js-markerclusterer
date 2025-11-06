@@ -111,7 +111,9 @@ export class DefaultRenderer implements Renderer {
   ): Marker {
     // change color if this cluster has more markers than the mean cluster
     const color =
-      count > Math.max(10, stats.clusters.markers.mean) ? "#ff0000" : "#0000ff";
+          count >= 300 ? '#E53935' :     // red
+          count >= 30  ? '#FFB300' :     // amber
+                   '#1E88E5';      // blue
 
     // create svg literal with fill color
     const svg = `<svg fill="${color}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="50" height="50">
